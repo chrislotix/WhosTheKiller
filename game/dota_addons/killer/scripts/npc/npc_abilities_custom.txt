@@ -1,17 +1,12 @@
-// Dota Abilities Override File
-// DataDriven Ability Guide: https://moddota.com/forums/discussion/14/datadriven-ability-breakdown-documentation
-
 "DOTAAbilities"
 {
-	"Version"		"1"
-	
 	"example_ability"
 	{
 		"ID"							"1852"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
 		"BaseClass"						"ability_datadriven"
 		"AbilityTextureName"			"holdout_blade_fury"
-
+	
 		// Stats
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastRange"				"1000"
@@ -27,7 +22,7 @@
 			"particle"					"particles/econ/generic/generic_aoe_explosion_sphere_1/generic_aoe_explosion_sphere_1.vpcf"
 			"soundfile"					"soundevents/game_sounds_heroes/game_sounds_gyrocopter.vsndevts"
 		}
-
+	
 		// Item Info
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityManaCost"				"300"
@@ -179,18 +174,17 @@
 			}
 		}
 	}
-  
-//-------------------
-// Dummy stuff
-//-------------------
-  
+	//-------------------
+	// Dummy stuff
+	//-------------------
+	  
 	"killer_dummy_unit"
 	{
 		"AbilityBehavior" 		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass" 					"ability_datadriven"
 		"AbilityTextureName"            "rubick_empty1"
 		"MaxLevel"                      "1"
-
+	
 		"Modifiers"
 		{
 			"dummy_unit"
@@ -206,8 +200,7 @@
 			}
 		}
 	}
-  
-    "killer_empty1"
+	"killer_empty1"
 	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------
@@ -217,7 +210,6 @@
 		"BaseClass" 					"ability_datadriven"
 		"AbilityTextureName"            "rubick_empty1"
 	}
-	
 	"killer_empty2"
 	{
 		// General
@@ -228,7 +220,6 @@
 		"BaseClass" 					"ability_datadriven"
 		"AbilityTextureName"            "rubick_empty1"
 	}
-	
 	"killer_empty3"
 	{
 		// General
@@ -239,7 +230,6 @@
 		"BaseClass" 					"ability_datadriven"
 		"AbilityTextureName"            "rubick_empty1"
 	}
-	
 	"killer_empty4"
 	{
 		// General
@@ -250,7 +240,6 @@
 		"BaseClass" 					"ability_datadriven"
 		"AbilityTextureName"            "rubick_empty1"
 	}
-	
 	"killer_empty5"
 	{
 		// General
@@ -261,7 +250,6 @@
 		"BaseClass" 					"ability_datadriven"
 		"AbilityTextureName"            "rubick_empty1"
 	}
-	
 	"killer_empty6"
 	{
 		// General
@@ -272,5 +260,72 @@
 		"BaseClass" 					"ability_datadriven"
 		"AbilityTextureName"            "rubick_empty1"
 	}
+	"peasant_sprint"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"				"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
+		"AbilityTextureName" 	"slardar_sprint"
+		"MaxLevel"				"1"
+	
+		// Precache
+		//-------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"soundfile"		"soundevents/game_sounds_heroes/game_sounds_slardar.vsndevts"
+			"particle"		"particles/units/heroes/hero_slardar/slardar_sprint.vpcf"
+		}
+	
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"0"
+		"AbilityCastPoint"				"0.0 0.0 0.0 0.0"
+	
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"20"
+		
+		"AbilitySpecial"	
+		{
+			"01"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"duration"					"5"
+			}
+		}
+	
+		"OnSpellStart"
+	    {
+	        "FireSound"
+	        {
+	        	"EffectName" "Hero_Slardar.Sprint"
+	        	"Target"	 "CASTER"
+	        }
+	
+	        "ApplyModifier"
+	        {
+	        	"ModifierName"	"modifier_peasant_sprint"
+	        	"Target" 		"CASTER"
+	        	"Duration"		"%duration"
+	        }
+	    }
+	
+	    "Modifiers"
+	    {
+	    	"modifier_sprint_datadriven"
+	    	{
+	    		"IsBuff" "1"
+	
+	    		"EffectName"	"particles/units/heroes/hero_slardar/slardar_sprint.vpcf"
+		    	"EffectAttachType"	"follow_origin"
+	
+	
+	    		"Properties"
+		    	{
+		    		"MODIFIER_PROPERTY_MOVESPEED_ABSOLUTE"	"522"
+		    	}
+	    	}
+	    }
+	}	
 }
-

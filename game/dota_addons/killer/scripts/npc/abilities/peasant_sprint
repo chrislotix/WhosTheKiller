@@ -1,0 +1,68 @@
+"peasant_sprint"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"				"ability_datadriven"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
+	"AbilityTextureName" 	"slardar_sprint"
+	"MaxLevel"				"1"
+
+	// Precache
+	//-------------------------------------------------------------------------------------------------------------
+	"precache"
+	{
+		"soundfile"		"soundevents/game_sounds_heroes/game_sounds_slardar.vsndevts"
+		"particle"		"particles/units/heroes/hero_slardar/slardar_sprint.vpcf"
+	}
+
+	// Casting
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCastRange"				"0"
+	"AbilityCastPoint"				"0.0 0.0 0.0 0.0"
+
+	// Time		
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCooldown"				"20"
+	
+	"AbilitySpecial"	
+	{
+		"01"
+		{
+			"var_type"					"FIELD_FLOAT"
+			"duration"					"5"
+		}
+	}
+
+	"OnSpellStart"
+    {
+        "FireSound"
+        {
+        	"EffectName" "Hero_Slardar.Sprint"
+        	"Target"	 "CASTER"
+        }
+
+        "ApplyModifier"
+        {
+        	"ModifierName"	"modifier_peasant_sprint"
+        	"Target" 		"CASTER"
+        	"Duration"		"%duration"
+        }
+    }
+
+    "Modifiers"
+    {
+    	"modifier_sprint_datadriven"
+    	{
+    		"IsBuff" "1"
+
+    		"EffectName"	"particles/units/heroes/hero_slardar/slardar_sprint.vpcf"
+	    	"EffectAttachType"	"follow_origin"
+
+
+    		"Properties"
+	    	{
+	    		"MODIFIER_PROPERTY_MOVESPEED_ABSOLUTE"	"522"
+	    	}
+    	}
+    }
+}	
