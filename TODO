@@ -18,14 +18,19 @@ Features / ideas
 	- 4. Suicide ()
 
 
-- Spooky effects
+
+- Spooky effects (the general idea is to have each of the zones have assosciated theme sounds)
 	- Rain
 	- Fog	
 	- Cementary
 		- Spooky DP ult ghosts
 		- Even more spooky hungry skeletons
 	- Minining zone
-		- random explosions with particles upon entering	
+		- random explosions with particles upon entering
+		- random techies sounds
+	- Forest
+		- spooky spiders
+
 
 - Spook skill (12 sec cooldown) (randomizes random spooky effect from the list below)
 	-screenshake
@@ -44,10 +49,27 @@ Features / ideas
 	-heavy breathing
 	-heart beating
 
-
+- Extra things/assets/ideas that might be useful
+	-venges wave of terror
+	-have part of the forest cut (saw sounds) from the mine side
+	-skittering sounds in the forest
+	-very quiet whispers of dying heroes in the deadend/camp zone
+	-catakeet headless model (forest)
+	-ftp dendi flying head (pudge)
+	-gladiator revenge head (pudge)
+	-models/items/rubick/serpentinemystic_back/serpentinemystic_back.vmdl
+	-timbersaw saw going through the cut part of the woods
+	-notes
+	-weaver invis dmg effect at random
 
 TODO:
 
 - Peasant / Killer skills
-- Early map layout
+- Early map layout (in progress)
+	- need to finish the forest then work on details
+	- candles at the main cementary building
+	- add gravestones (mix with tombstones)
+	- wooden sentry tower to the deadend/camp
+	- add crows to cementary
+	- bats around the map
 - Sounds				
