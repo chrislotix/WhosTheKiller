@@ -1,0 +1,69 @@
+"killer_gaze"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"				"ability_datadriven"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+	"FightRecapLevel"				"1"
+	"AbilityTextureName"			"medusa_stone_gaze"
+	"MaxLevel"						"1"
+
+	// Precache
+	//-------------------------------------------------------------------------------------------------------------
+	"precache"
+	{
+		"soundfile"			"soundevents/game_sounds_heroes/game_sounds_medusa.vsndevts"
+		"particle"			"particles/units/heroes/hero_medusa/status_effect_medusa_stone_gaze.vpcf"
+	}
+	
+	// Casting
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCastRange"				"1000"
+	"AbilityCastPoint"				"0 0 0 0"
+
+	// Time		
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCooldown"				"90"
+
+	// Cost
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityManaCost"				"0"
+	
+	// Special
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"					"FIELD_FLOAT"
+			"duration"					"4.0"
+		}
+		"02"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"bonus_vision"				"1800"
+		}
+	}
+
+	"OnSpellStart"
+	{
+		"ApplyModifier"
+		{
+			"ModifierName"	"modifier_killer_gaze"
+			"Target"		"CASTER"
+			"Duration"		"%duration"
+		}
+	}
+
+	"Modifiers"
+	{
+		"modifier_killer_gaze"
+		{
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_BONUS_NIGHT_VISION" "%bonus_vision"
+			}
+		}
+	}
+}

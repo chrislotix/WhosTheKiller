@@ -1,0 +1,244 @@
+"peasant_sprint"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"				"ability_datadriven"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
+	"AbilityTextureName" 	"spirit_breaker_empowering_haste"
+	"MaxLevel"				"1"
+
+	// Precache
+	//-------------------------------------------------------------------------------------------------------------
+	"precache"
+	{
+		"soundfile"		"soundevents/game_sounds_heroes/game_sounds_slardar.vsndevts"
+		"particle"		"particles/units/heroes/hero_slardar/slardar_sprint.vpcf"
+		"particle"		"particles/units/heroes/hero_enigma/enigma_midnight_pulse.vpcf"
+		"particle"		"particles/status_fx/status_effect_medusa_stone_gaze.vpcf"
+        "particle"      "particles/econ/items/puck/puck_alliance_set/puck_dreamcoil_waves_aproset.vpcf"
+	}
+
+	// Casting
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCastRange"				"0"
+	"AbilityCastPoint"				"0.0 0.0 0.0 0.0"
+
+	// Time		
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCooldown"				"20"
+	
+	"AbilitySpecial"	
+	{
+		"01"
+		{
+			"var_type"					"FIELD_FLOAT"
+			"duration"					"5"
+		}
+		"02"
+		{
+			"var_type"					"FIELD_FLOAT"
+			"radius"					"150"
+		}
+	}
+
+	"OnSpellStart"
+    {
+        "FireSound"
+        {
+        	"EffectName" "Hero_Slardar.Sprint"
+        	"Target"	 "CASTER"
+        }
+
+        "ApplyModifier"
+        {
+        	"ModifierName"	"modifier_peasant_sprint"
+        	"Target" 		"CASTER"
+        	"Duration"		"%duration"
+        }
+    }
+
+    "Modifiers"
+    {
+    	"modifier_peasant_sprint"
+    	{
+    		"IsBuff" "1"
+
+    		"EffectName"	"particles/units/heroes/hero_slardar/slardar_sprint.vpcf"
+	    	"EffectAttachType"	"follow_origin"
+
+
+    		"Properties"
+	    	{
+	    		"MODIFIER_PROPERTY_MOVESPEED_ABSOLUTE"	"522"
+	    	}
+    	}
+
+    	"modifier_voting_dummy"
+    	{
+    		"OnCreated"
+    		{
+    			"AttachEffect"
+    			{
+    				"EffectName"		"particles/units/heroes/hero_enigma/enigma_midnight_pulse.vpcf"
+    				"EffectAttachType"	"follow_origin"
+    				"Target"            "TARGET"
+
+    				"ControlPoints"
+    				{
+    					"01"	"%radius 0 0"
+    				}
+    			}
+    		}
+
+    		"Aura"          	"modifier_killer_aura"
+			"Aura_Radius"   	"%radius"
+			"Aura_Teams"    	"DOTA_UNIT_TARGET_TEAM_BOTH"
+			"Aura_Types"    	"DOTA_UNIT_TARGET_HERO"
+
+			"States"
+			{
+				//"MODIFIER_STATE_NO_HEALTH_BAR"		"MODIFIER_STATE_VALUE_ENABLED"
+				"MODIFIER_STATE_NO_UNIT_COLLISION"	"MODIFIER_STATE_VALUE_ENABLED"
+				"MODIFIER_STATE_NOT_ON_MINIMAP"		"MODIFIER_STATE_VALUE_ENABLED"
+			}
+    	}
+
+    	"modifier_killer_aura"
+    	{
+    		"OnCreated"
+    		{
+    			"ApplyModifier"
+    			{
+    				"ModifierName"	"modifier_killer_vote"
+    				"Target" 		"TARGET"
+    			}
+    		}
+    	}
+
+    	"modifier_killer_vote"
+    	{
+    		"OnCreated"
+    		{
+    			"RunScript"
+    			{
+    				"ScriptFile"	"heroes/hero_peasant/voting_dummy.lua"
+    				"Function"		"VotingDummy"
+    			}
+    		}
+
+    		"StatusEffectName" 		"particles/status_fx/status_effect_medusa_stone_gaze.vpcf" 	   
+    		"StatusEffectPriority"  "1"
+
+    		"States"
+    		{
+    			"MODIFIER_STATE_FROZEN"		"MODIFIER_STATE_VALUE_ENABLED"
+    			"MODIFIER_STATE_NO_HEALTH_BAR"	"MODIFIER_STATE_VALUE_ENABLED"
+    			"MODIFIER_STATE_STUNNED"	"MODIFIER_STATE_VALUE_ENABLED"
+                "MODIFIER_STATE_NO_UNIT_COLLISION"  "MODIFIER_STATE_VALUE_ENABLED"
+    		}
+    	}
+
+        "modifier_killer_vote_dead"
+        {
+            "OnCreated"
+            {
+                "RunScript"
+                {
+                    "ScriptFile"    "heroes/hero_peasant/voting_dummy.lua"
+                    "Function"      "VotingDummy"
+                }
+            }
+
+            "StatusEffectName"      "particles/status_fx/status_effect_medusa_stone_gaze.vpcf"     
+            "StatusEffectPriority"  "1"
+
+            "States"
+            {
+                "MODIFIER_STATE_FROZEN"     "MODIFIER_STATE_VALUE_ENABLED"
+                "MODIFIER_STATE_NO_HEALTH_BAR"  "MODIFIER_STATE_VALUE_ENABLED"
+                "MODIFIER_STATE_STUNNED"    "MODIFIER_STATE_VALUE_ENABLED"
+                "MODIFIER_STATE_NO_UNIT_COLLISION"  "MODIFIER_STATE_VALUE_ENABLED"
+            }
+        }
+
+    	"modifier_killer_end_game"
+    	{
+    		"OnDeath"
+    		{
+    			"RunScript"
+    			{
+    				"ScriptFile"	"heroes/hero_peasant/end_game.lua"
+    				"Function"		"end_game"
+    			}
+    		}
+    	}
+
+        "modifier_killer_attack"
+        {
+            "IsHidden"          "1"
+            "Attributes"        "MODIFIER_ATTRIBUTE_PERMANENT"
+
+            "OnAttacked"
+            // "%attack_damage" is set to the damage value after mitigation
+            {
+                "RunScript"
+                {
+                    "ScriptFile"    "heroes/hero_peasant/on_attacked.lua"
+                    "Function"        "on_attacked"
+                }
+            }
+        }
+
+        "modifier_peasant_disarm"
+        {
+            "TextureName"       "enchantress_untouchable"
+            "Attributes"        "MODIFIER_ATTRIBUTE_PERMANENT"
+
+            "States"
+            {
+                "MODIFIER_STATE_DISARMED"        "MODIFIER_STATE_VALUE_ENABLED"
+            }
+        }
+
+        "modifier_peasant_clearvision_aura"
+        {
+            "IsHidden"      "1"
+
+            "Attributes"        "MODIFIER_ATTRIBUTE_PERMANENT"
+
+            "ThinkInterval"  "1.0"
+            "OnIntervalThink"
+            {
+                "ActOnTargets"
+                {
+                    "Target"
+                    {
+                        "Center"      "CASTER"
+                        "Radius"     "GLOBAL"
+                        "Teams"     "DOTA_UNIT_TARGET_TEAM_BOTH"
+                        "Types"     "DOTA_UNIT_TARGET_ALL"
+                    }
+                
+                    "Action"    
+                    {
+                        "ApplyModifier"
+                        {
+                            "ModifierName"    "modifier_peasant_clearvision"
+                            "Target"         "TARGET"
+                        }
+                    }
+                }
+            }
+        }
+
+        "modifier_peasant_clearvision"
+        {
+            "IsHidden"  "1"
+
+            "States"
+            {
+                "MODIFIER_STATE_PROVIDES_VISION"        "MODIFIER_STATE_VALUE_ENABLED"
+            }
+        }
+    }
+}	

@@ -1,0 +1,14 @@
+"AddonInfo"
+{
+	"addonSteamAppID"				"816"
+	"addontitle"					"killer"
+	"addonversion"					"0.1"
+	"addontagline"					"killer"
+	"addonauthor"					"XXX"
+	"addonSteamGroupName"			""
+	"addonauthorSteamID"			""
+	"addonContent_Campaign"			"0"
+	"addonURL0"						""
+	"addonDescription"				"killer"
+	"TeamCount"						"10"
+}

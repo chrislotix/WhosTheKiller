@@ -1,0 +1,8 @@
+killer_release
+{
+	material materials/overviews/killer_release.vmat
+	pos_x -2209
+	pos_y 5440
+	scale 8.500
+}
+

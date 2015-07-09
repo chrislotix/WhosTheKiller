@@ -1,0 +1,110 @@
+"peasant_survival_instincts"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"				"ability_datadriven"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+	"AbilityType"					"DOTA_ABILITY_TYPE_ULTIMATE"
+	"FightRecapLevel"				"2"
+	"AbilityTextureName"			"sven_gods_strength"
+	"MaxLevel"						"1"
+
+		// Precache
+	//-------------------------------------------------------------------------------------------------------------
+	"precache"
+	{	
+		"soundfile"	"soundevents/game_sounds_heroes/game_sounds_abaddon.vsndevts"
+		"particle"  "particles/units/heroes/hero_abaddon/abaddon_borrowed_time.vpcf"
+		"particle"	"particles/status_fx/status_effect_abaddon_borrowed_time.vpcf"
+	}
+	
+	// Casting
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCastPoint"				"0.452 0.452 0.452"
+
+	// Time		
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCooldown"				"60.0 50.0 40.0"
+
+	// Cost
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityManaCost"				"0 0 0"
+
+	// Special
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"bonus_hp"					"400"
+		}
+		"02"
+		{
+			"var_type"					"FIELD_FLOAT"
+			"duration"					"10.0"
+		}
+		"03"
+		{
+			"var_type"					"FIELD_FLOAT"
+			"hp_regen_pct"				"100"
+		}
+		"04"
+		{
+			"var_type"					"FIELD_FLOAT"
+			"size"						"1.5"
+		}
+	}	
+
+	"OnSpellStart"
+	{
+		"ApplyModifier"
+		{
+			"Target" 		"CASTER"
+			"ModifierName"	"modifier_peasant_survival_instincts"
+			"Duration"		"%duration"
+		}
+		
+		"FireSound"
+		{
+			"Target" 		"CASTER"
+			"EffectName"	"Hero_Abaddon.BorrowedTime"	
+		}
+
+		"RunScript"
+		{
+			"ScriptFile"	"heroes/hero_peasant/survival_instincts.lua"
+			"Function"		"survival_instincts"
+		}		
+	}
+
+	"Modifiers"
+	{
+		"modifier_peasant_survival_instincts"
+		{
+			"IsBuff"			"1"
+
+			"EffectName"		"particles/units/heroes/hero_abaddon/abaddon_borrowed_time.vpcf"
+			"EffectAttachType"	"follow_origin"
+
+			"StatusEffectName"		"particles/status_fx/status_effect_abaddon_borrowed_time.vpcf"
+			"StatusEffectPriority"  "15"
+
+			"OnDestroy"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"heroes/hero_peasant/survival_instincts.lua"
+					"Function"		"survival_instincts_end"
+				}
+			}
+			
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_HEALTH_REGEN_PERCENTAGE"		"%hp_regen_pct"
+			    "MODIFIER_PROPERTY_HEALTH_BONUS"				"%bonus_hp" 
+			}
+		}
+	}
+}
+

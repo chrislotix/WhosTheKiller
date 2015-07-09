@@ -1,0 +1,86 @@
+If a player reaches 0 lives remaining then prevent respawn and apply a permanent modifier
+to every enemy peasant that provides vision for the "spectator" player
+
+On peasant death check for total deaths, if it exceeds the death limit then prevent respawning
+
+10 players all peasants
+1 is given a fraction of visages powers and his "echo" is controlled by him
+his goal is to kill other players while being undiscovered
+if he is discovered then he is considered a failure but has a chance to redeem himself
+escape the narrow maze and live or be caught by the surviving peasants and get used as a vessel
+so that they can return to the world of the living
+
+have a passive modifier which disables attack on the peasants
+
+lives remaining -- done
+phase one timer -- done
+phase two timer -- done
+voting
+endgame
+add a 15 second invisibility after respawn or use SetRespawnPosition
+
+phase two 
+disable abilities -- done
+kill killer unit -- done
+
+teleport unit after voting
+
+phase 3
+have the killer unit cast an invisible modifier on the owner
+modifier checks if phase 3 is active
+when the owner of the modifier dies, the victory goes to the attacker
+
+check if each hero is alive, if it is then remove the modifier
+modifier checks the killer table and compares it to the hero
+if the hero is not in it then kill the unit
+
+---------------
+
+kill voting dummies -- Done
+implement a modifier that kills the unit if its attacked -- DONE
+visage familiars carrying stones
+disable attack during phase 1 and 2 -- DONE
+remove no attack modifier in phase 3 -- DONE
+teleport correct guesses in phase 3 -- DONE
+create a dummy with an aura in p3 which checks if the unit under the aura effect is the killer
+if it is then end the game and set the killer as the winner
+
+fix endgame winner -- DONE
+starting stun -- DONE
+fix killing the killer -- DONE
+voting rings names -- done
+
+statue collision -- done
+
+fix survival instincts -- done
+set instant respawn
+
+set max 2 hp or change hero base damage -- done
+check why when the killer is killed why the killer isnt winning -- done
+implement vision in the graveyard area -- done
+after reaching the death limit, respawn them as statues -- include a flag so that they arent targeted for other stuff
+
+fix phantom players
+fix voting ring carrying
+add phase 3 teleportation effect
+fix camera during voting phase
+create portal particle
+provide clearvision around the portal
+add spooky in your face particles
+implement fog
+fix vision range on voting part
+change placement of voting rings and place the players inside the graveyard
+players without lives should be statues
+add countdown to start
+
+--- CRITICAL ISSUES ---
+start countdown
+start explanation
+tooltips
+particles
+end game particle
+end game portal vision
+
+end game particle -- done
+voting pull
+dead players > stone -- done
