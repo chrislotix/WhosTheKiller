@@ -1,0 +1,81 @@
+Features / ideas
+
+- 6-10
+- Randomized killer
+- Rest are peasants
+- Small, unshared vision
+- Killer has special skills on top of some of Peasant's skills
+	- 1. Flying movement and flying vision skill
+	- 2. Ensare (2 sec) (17CD)
+	- 3. Sleep (175 Mana cost) (3 sec)
+	- 4. Polymorph (2 sec)
+	- 5. Blink (50 Mana cost) (10 sec cd)
+
+- Peasants abilities
+	- 1. Sprint (5 sec duration) (20 sec cd)
+	- 2. Survival Instinct (sets hp to 670) (you can regen to full between killers attacks) (40sec cd) (10 sec duration)
+	- 3. Torch (Invisi + max movement speed) (5 sec duration) (35 min cd)
+	- 4. Suicide ()
+
+
+
+- Spooky effects (the general idea is to have each of the zones have assosciated theme sounds)
+	- Rain
+	- Fog	
+	- Cementary
+		- Spooky DP ult ghosts
+		- Even more spooky hungry skeletons
+	- Minining zone
+		- random explosions with particles upon entering
+		- random techies sounds
+	- Forest
+		- spooky spiders
+
+
+- Spook skill (12 sec cooldown) (randomizes random spooky effect from the list below)
+	-screenshake
+	-womans scream
+	-door squeek
+	-footsteps from ghost walk (sound + graphic effect)
+	-creepy muffled laugh
+	-pa's crit blood
+	-nightstalker ult sound
+	-lycan howl
+	-random wolf sounds
+	-riki smoke
+	-vengeful spirit wave of terror
+	-weaver invis
+	-evil whisper
+	-heavy breathing
+	-heart beating
+
+- Extra things/assets/ideas that might be useful
+	-venges wave of terror
+	-have part of the forest cut (saw sounds) from the mine side
+	-skittering sounds in the forest
+	-very quiet whispers of dying heroes in the deadend/camp zone
+	-catakeet headless model (forest)
+	-ftp dendi flying head (pudge)
+	-gladiator revenge head (pudge)
+	-models/items/rubick/serpentinemystic_back/serpentinemystic_back.vmdl
+	-timbersaw saw going through the cut part of the woods
+	-notes
+	-weaver invis dmg effect at random
+
+TODO:
+
+1. net should reveal invis
+2. net should prevent from going invis
+3. survival instincts dispels the net
+- rename the map
+- implement fog
+- visage familiar carrying
+- fix vision range over the cementary during voting part
+- balance the skills
+- camera center FOR VOTING PHASE YOU NIGGER
+- tp scroll effect for phase 3
+- chaos knight reality rift for the portal exit
+- le rune fais model
+- spook skill + sounds
+- add tooltips
+- remove sounds for the heroes				
