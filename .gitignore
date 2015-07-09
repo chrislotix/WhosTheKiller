@@ -3,7 +3,7 @@
 *.bin
  
 # Ignore game folder, and all default dota_addons folders
-!game
+!Game
  
  
 # Ignore content folder, and all default dota_addons folders
