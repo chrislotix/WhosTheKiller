@@ -1,6 +1,10 @@
 # Cache crap that Valve autogenerates
 *.bin
 
+# Unnecessary folders
+Content/*
+Game/resource/flash3/*
+
 # Compiled formats
 *.vpcf_c
 *.vtex_c
