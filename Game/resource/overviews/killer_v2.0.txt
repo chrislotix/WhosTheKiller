@@ -1,8 +1,0 @@
-killer_v2.0
-{
-	material materials/overviews/killer_v2.0.vmat
-	pos_x -2209
-	pos_y 5440
-	scale 8.500
-}
-

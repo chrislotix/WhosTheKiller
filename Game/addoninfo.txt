@@ -1,14 +1,18 @@
 "AddonInfo"
 {
-	"addonSteamAppID"				"816"
-	"addontitle"					"killer"
-	"addonversion"					"0.1"
-	"addontagline"					"killer"
-	"addonauthor"					"XXX"
-	"addonSteamGroupName"			""
-	"addonauthorSteamID"			""
-	"addonContent_Campaign"			"0"
-	"addonURL0"						""
-	"addonDescription"				"killer"
-	"TeamCount"						"10"
+  "TeamCount" "8"
+  "maps"      "template_map"
+  "IsPlayable"  "1"
+  "template_map"
+  {
+          "MaxPlayers"                    "10"
+  }
+//  "desert_duo"
+//  {
+//          "MaxPlayers"                    "10"
+//  }
+//  "forest_solo"
+//  {
+//          "MaxPlayers"                    "10"
+//  }
 }
