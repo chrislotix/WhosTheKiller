@@ -1,4 +1,4 @@
-PROJECTILES_VERSION = "0.83"
+PROJECTILES_VERSION = "0.84"
 
 PROJECTILES_THINK = 0.01
 
@@ -16,7 +16,7 @@ function Projectiles:start()
     
     self.thinkEnt = Entities:CreateByClassname("info_target")
     --self.treeCutter = CreateUnitByName('npc_dummy_unit', Vector(0,0,0) , true, nil, nil, DOTA_TEAM_NOTEAM)
-    --self.treeCutter:FindAbilityByName("narrowmaze_dummy_unit"):SetLevel(1)
+    --self.treeCutter:FindAbilityByName("theworldanew_dummy_unit"):SetLevel(1)
     --self.treeCutter:AddAbility("tree_cutter")
     --self.treeCutter:FindAbilityByName("tree_cutter"):SetLevel(1)
     
@@ -329,7 +329,7 @@ function Projectiles:CreateProjectile(projectile)
       -- frame and sub-frame collision checks
       local subpos = pos
       local velLength = vel:Length()
-      local tot = math.ceil(velLength / 32) -- lookahead number
+      local tot = math.max(1, math.ceil(velLength / 32)) -- lookahead number
       local div = 1 / tot
 
       -- unit detection prep

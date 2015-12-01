@@ -1,11 +1,11 @@
-NOTIFICATIONS_VERSION = "0.88"
+NOTIFICATIONS_VERSION = "0.89"
 
 --[[
   Sample Panorama Notifications Library by BMD
 
   Installation
   -"require" this file inside your code in order to gain access to the Notifications class for sending notifications to players, teams, or all clients.
-  -Additionally, ensure that you have the narrowmaze_hud_base.xml, narrowmaze_hud_base.js, and narrowmaze_hud_base.css files in your panorama content folder.
+  -Additionally, ensure that you have the theworldanew_notifications.xml, theworldanew_notifications.js, and theworldanew_notifications.css files in your panorama content folder.
 
   Usage
   -Notifications can be sent to the Top or Bottom notification panel of an individual player, a whole team, or all clients at once.
